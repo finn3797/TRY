@@ -16,7 +16,8 @@ class RegisterController(Controller):
             {
                 "email": "required",
                 "name": "required",
-                "password": "required|strong|confirmed",
+                "password": "required|confirmed",
+                # 去除严格验证
             }
         )
 
