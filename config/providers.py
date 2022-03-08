@@ -23,7 +23,7 @@ from masonite.scheduling.providers import ScheduleProvider
 from masonite.notification.providers import NotificationProvider
 from masonite.validation.providers import ValidationProvider
 
-# from masonite.api.providers import ApiProvider
+from masonite.api.providers import ApiProvider
 
 PROVIDERS = [
     FrameworkProvider,
@@ -46,10 +46,11 @@ PROVIDERS = [
     ValidationProvider,
     AuthorizationProvider,
     ORMProvider,
-    # ApiProvider
+    ApiProvider
 ]
 # https://docs.masoniteproject.com/features/api
 # 应该暂时不需要使用api
-# 
+# changed 2022-03-08 前台项目需要使用api接口
+
 # https://docs.masoniteproject.com/security/cors
 # 启用API 一般也会使用 cors

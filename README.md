@@ -41,7 +41,6 @@ python3 -m venv venv
 ```
 
 Then activate the virtual environment:
-
 ```
 WINDOWS: $ ./venv/Scripts/activate
 MAC: $ source venv/bin/activate
@@ -59,55 +58,13 @@ python craft serve
 # 如果无法启动 执行pip install -r .\requirements.txt
 ```
 
-## Hello World
-
-All web routes are in `routes/web.py`. In this file is already the route to the welcome controller. To start your hello world example just add something like:
-
-```python
-Get('/hello/world', 'HelloWorldController@show'),
+## 修改.env文件
 ```
-
-our routes constant file should now look something like:
-
-```python
-ROUTES = [
-    Get('/', 'WelcomeController@show'),
-    Get('/hello/world', 'HelloWorldController@show'),
-]
+DB_DATABASE=数据库名称
+DB_USERNAME=数据库用户名
+DB_PASSWORD=数据库密码
 ```
-
-In order to make the `HelloWorldController` we can use a `craft` command:
-
-    $ craft controller HelloWorld
-
-This will scaffold the controller for you and put it in `app/http/controllers/HelloWorldController.py`. This new file will have all the imports for us.
-
-Inside the `HelloWorldController` we can make our `show` method like this:
-
-```python
-def show(self, view: View):
-    """ Show Hello World Template """
-    return view.render('helloworld')
-```
-
-As you see above, we are returning a `helloworld` template but we do not have that yet. All templates are in `resources/templates`. We can simply make a file called `helloworld.html` or run the `craft` command:
-
-    $ craft view helloworld
-
-Which will create the `resources/templates/helloworld.html` template for us.
-
-Lastly all templates run through the Jinja2 rendering engine so we can use any Jinja2 code inside our template like:
-
-inside the `resources/views/helloworld.html`
-
-```
-{{ 'Hello World' }}
-```
-
-Now just run the server:
-
-    $ craft serve
-
-And navigate to `localhost:8000/hello/world` and you will see `Hello World` in your browser.
+## 访问登录页
+`localhost:8000/home`
 
 Happy Crafting!
