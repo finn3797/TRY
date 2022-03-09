@@ -1,7 +1,9 @@
 ## 每次进入都使用本地环境
 ```
-WINDOWS: $ ./venv/Scripts/activate
-MAC: $ source venv/bin/activate
+WINDOWS: $ 
+./venv/Scripts/activate
+MAC: $ 
+source venv/bin/activate
 # 如果无法启动执行以下语句
 pip install -r .\requirements.txt
 ```
