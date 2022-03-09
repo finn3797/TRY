@@ -5,7 +5,10 @@ WINDOWS: $
 MAC: $ 
 source venv/bin/activate
 # 如果无法启动执行以下语句
+# win
 pip install -r .\requirements.txt
+# linux
+pip install -r ./requirements.txt
 ```
 ## 然后启动本地服务
 ```

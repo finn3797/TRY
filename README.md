@@ -54,12 +54,15 @@ pip install masonite
 # project start .
 project install
 python craft serve
-
+# 加速源
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 # 如果无法启动 执行pip install -r .\requirements.txt
 ```
 
 ## 修改.env文件
 ```
+cp .env-example .env
+
 DB_DATABASE=数据库名称
 DB_USERNAME=数据库用户名
 DB_PASSWORD=数据库密码
