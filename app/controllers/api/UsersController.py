@@ -1,10 +1,12 @@
 from masonite.controllers import Controller
 from masonite.views import View
+from app.models.User import User
 
 
 class UsersController(Controller):
+
     def index(self, view: View):
-        return view.render("")
+        return User.get()
 
     def show(self, view: View):
         return view.render("")

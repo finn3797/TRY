@@ -1,11 +1,13 @@
 from masonite.routes import Route
+# from app.resources.UserResource import UserResource
 
 ROUTES = [
     Route.group([
-        Route.get("/test", "WelcomeController@api").name('/test'),
+        Route.get("", "WelcomeController@api").name('index'),
+        Route.get("/test", "WelcomeController@api").name('test'),
     ],
-        prefix="/api",
-        middleware=['web', 'cors'],
+        middleware=[],
         name="api."),
-    # Route.api('users', "api.UserController")
+    Route.api('users', "api.UsersController"),
+    # UserResource('/x/users').routes(),
 ]

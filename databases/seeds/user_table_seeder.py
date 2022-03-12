@@ -10,9 +10,9 @@ class UserTableSeeder(Seeder):
         """Run the database seeds."""
         User.create(
             {
-                "name": "Joe",
-                "email": "user@example.com",
-                "password": Hash.make("secret"),
+                "name": "Osindex",
+                "email": "admin@admin.com",
+                "password": Hash.make("123456"),
                 "phone": "+123456789",
             }
         )

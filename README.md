@@ -66,8 +66,30 @@ cp .env-example .env
 DB_DATABASE=数据库名称
 DB_USERNAME=数据库用户名
 DB_PASSWORD=数据库密码
+
+# 填充默认用户名密码 admin@admin.com/123456
+python craft seed:run 
+
 ```
-## 访问登录页
-`localhost:8000/home`
+## 访问
+`localhost:8000`
+
+## 登录接口
+```
+Post: /api/auth
+data: {
+    "username": "admin@admin.com",
+    "password": "123456"
+}
+```
 
 Happy Crafting!
+
+
+## 其它
+使用前端项目请进入fe目录
+```
+cd fe
+yarn install
+yarn dev
+```

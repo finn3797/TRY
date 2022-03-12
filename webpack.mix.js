@@ -3,10 +3,11 @@ applications. By default, we are compiling the CSS file for the application as w
 bundling up all the JS files. */
 const mix = require('laravel-mix')
 const path = require('path')
+const tailwindcss = require("tailwindcss");
 
-
-mix.js('resources/js/app.js', 'storage/compiled/js')
-  .postCss('resources/css/app.css', 'storage/compiled/css', [
+mix.js('resources/js/app.js', 'storage/public/js')
+  .postCss('resources/css/app.css', 'storage/public/css', [
+    tailwindcss("tailwind.config.js"),
     //
   ])
 

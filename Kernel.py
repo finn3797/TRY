@@ -17,12 +17,11 @@ from masonite.configuration import config
 
 from app.middlewares import VerifyCsrfToken, AuthenticationMiddleware
 from masonite.api.middleware import JWTAuthenticationMiddleware
-from masonite.inertia import InertiaMiddleware
 
 
 class Kernel:
 
-    http_middleware = [MaintenanceModeMiddleware, InertiaMiddleware, EncryptCookies]
+    http_middleware = [MaintenanceModeMiddleware, EncryptCookies]
 
     route_middleware = {
         "web": [SessionMiddleware, LoadUserMiddleware, VerifyCsrfToken],

@@ -24,7 +24,6 @@ from masonite.notification.providers import NotificationProvider
 from masonite.validation.providers import ValidationProvider
 
 from masonite.api.providers import ApiProvider
-from masonite.inertia import InertiaProvider
 
 PROVIDERS = [
     FrameworkProvider,
@@ -47,8 +46,7 @@ PROVIDERS = [
     ValidationProvider,
     AuthorizationProvider,
     ORMProvider,
-    ApiProvider,
-    InertiaProvider
+    ApiProvider
 ]
 # https://docs.masoniteproject.com/features/api
 # 应该暂时不需要使用api
