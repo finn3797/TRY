@@ -1,10 +1,10 @@
 from masonite.controllers import Controller
 from masonite.views import View
 from app.models.User import User
+from masonite.authentication import Auth
 
 
 class UsersController(Controller):
-
     def index(self, view: View):
         return User.get()
 

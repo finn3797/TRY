@@ -46,12 +46,12 @@
 				<el-form ref="loginForm" :model="ruleForm" :rules="rules" label-width="0" size="large">
 					<el-form-item prop="user">
 						<el-input v-model="ruleForm.user" prefix-icon="el-icon-user" clearable :placeholder="$t('login.userPlaceholder')">
-							<template #append>
+							<!-- <template #append>
 								<el-select v-model="userType" style="width: 130px;">
 									<el-option :label="$t('login.admin')" value="admin"></el-option>
 									<el-option :label="$t('login.user')" value="user"></el-option>
 								</el-select>
-							</template>
+							</template> -->
 						</el-input>
 					</el-form-item>
 					<el-form-item prop="password">
@@ -75,7 +75,8 @@
 				<el-divider>{{ $t('login.signInOther') }}</el-divider>
 
 				<div class="login-oauth">
-					<el-button size="small" type="success" icon="sc-icon-wechat" circle></el-button>
+					暂无
+					<!-- <el-button size="small" type="success" icon="sc-icon-wechat" circle></el-button> -->
 				</div>
 			</div>
 		</div>
@@ -88,8 +89,8 @@
 			return {
 				userType: 'admin',
 				ruleForm: {
-					user: "admin",
-					password: "admin",
+					user: "admin@admin.com",
+					password: "123456",
 					autologin: false
 				},
 				rules: {
@@ -110,14 +111,14 @@
 						name: '简体中文',
 						value: 'zh-cn',
 					},
-					{
-						name: 'English',
-						value: 'en',
-					},
-					{
-						name: '日本語',
-						value: 'ja',
-					}
+					// {
+					// 	name: 'English',
+					// 	value: 'en',
+					// },
+					// {
+					// 	name: '日本語',
+					// 	value: 'ja',
+					// }
 				]
 			}
 		},
@@ -149,7 +150,7 @@
 			this.$store.commit("clearViewTags")
 			this.$store.commit("clearKeepLive")
 			this.$store.commit("clearIframeList")
-			console.log('%c SCUI %c Gitee: https://gitee.com/lolicode/scui', 'background:#666;color:#fff;border-radius:3px;', '')
+			// console.log('%c SCUI %c Gitee: https://gitee.com/lolicode/scui', 'background:#666;color:#fff;border-radius:3px;', '')
 		},
 		methods: {
 			async login(){
@@ -163,23 +164,22 @@
 					password: this.$TOOL.crypto.MD5(this.ruleForm.password)
 				}
 				//获取token
-				var user = await this.$API.auth.token.post(data)
-				if(user.code == 200){
-					this.$TOOL.data.set("TOKEN", user.data.token)
-					this.$TOOL.data.set("USER_INFO", user.data.userInfo)
+				let user = await this.$API.auth.token.post(data)
+				console.log(user, 'uuuser')
+				if(user.data){
+					this.$TOOL.data.set("TOKEN", user.data)
+					let info = await this.$API.auth.info.post()
+					this.$TOOL.data.set("USER_INFO", info.data)
 				}else{
 					this.islogin = false
-					this.$message.warning(user.message)
+					this.$message.warning(user.message || '用户名或密码错误')
 					return false
 				}
 				//获取菜单
 				var menu = null
-				if(this.ruleForm.user == 'admin'){
-					menu = await this.$API.system.menu.myMenus.get()
-				}else{
-					menu = await this.$API.demo.menu.get()
-				}
-				if(menu.code == 200){
+				// 菜单由前端写死
+				menu = await this.$API.system.menu.myMenus.get()
+				if(menu){
 					if(menu.data.menu.length==0){
 						this.islogin = false
 						this.$alert("当前用户无任何菜单权限，请联系系统管理员", "无权限访问", {
