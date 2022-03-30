@@ -41,8 +41,8 @@
 		</div>
 		<el-dropdown class="user panel-item" trigger="click" @command="handleUser">
 			<div class="user-avatar">
-				<el-avatar :size="30">{{ userNameF }}</el-avatar>
-				<label>{{ userName }}</label>
+				<el-avatar :size="30">{{ nameF }}</el-avatar>
+				<label>{{ name }}</label>
 				<el-icon class="el-icon--right"><el-icon-arrow-down /></el-icon>
 			</div>
 			<template #dropdown>
@@ -60,8 +60,8 @@
 	export default {
 		data(){
 			return {
-				userName: "",
-				userNameF: "",
+				name: "",
+				nameF: "",
 				msg: false,
 				msgList: [
 					{
@@ -96,8 +96,8 @@
 		},
 		created() {
 			var userInfo = this.$TOOL.data.get("USER_INFO");
-			this.userName = userInfo.userName;
-			this.userNameF = this.userName.substring(0,1);
+			this.name = userInfo.name;
+			this.nameF = this.name.substring(0,1);
 		},
 		methods: {
 			//个人信息

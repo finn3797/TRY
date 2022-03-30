@@ -165,7 +165,6 @@
 				}
 				//获取token
 				let user = await this.$API.auth.token.post(data)
-				console.log(user, 'uuuser')
 				if(user.data){
 					this.$TOOL.data.set("TOKEN", user.data)
 					let info = await this.$API.auth.info.post()

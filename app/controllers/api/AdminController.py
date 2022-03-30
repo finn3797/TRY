@@ -1,13 +1,20 @@
+import json
 from masonite.controllers import Controller
-from masonite.views import View
 from app.models.User import User
 from masonite.authentication import Auth
-import json
+from masonite.response import Response
+from app.helpers import helper
 
 
 class AdminController(Controller):
     def me(self, auth: Auth):
-        return auth.user()
+        # 测试
+        # return user
+        return helper.resModel(auth.attempt_by_id(1))
+        
+    def ver(self, response: Response):
+        data = '1.0.0'
+        return helper.res(data,'', 200, response)
 
     def mymenu(self):
         jsonMenu = '''

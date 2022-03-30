@@ -18,6 +18,13 @@ export default {
 			}
 		}
 	},
+	ver: {
+		url: `${config.API_URL}/ver`,
+		name: "获取最新版本号",
+		get: async function(){
+			return await http.get(this.url);
+		}
+	},
 	dic: {
 		tree: {
 			url: `${config.API_URL}/system/dic/tree`,
