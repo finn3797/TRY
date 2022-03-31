@@ -11,7 +11,7 @@ class Summary(Migration):
         with self.schema.create("summaries") as table:
             table.increments("id")
             table.unsigned_integer("snp_id")
-            table.text("content")
+            table.text("content").nullable()
             table.timestamps()
 
     def down(self):

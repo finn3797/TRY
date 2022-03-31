@@ -11,14 +11,14 @@ class HiC(Migration):
         with self.schema.create("hi_cs") as table:
             table.increments("id")
             table.unsigned_integer("snp_id")
-            table.string("rsid")
-            table.string("chr_1")
-            table.string("start_1")
-            table.string("end_1")
-            table.string("chr_2")
-            table.string("start_2")
-            table.string("end_2")
-            table.string("score")
+            table.string("rsid").nullable()
+            table.string("chr_1").nullable()
+            table.string("start_1").nullable()
+            table.string("end_1").nullable()
+            table.string("chr_2").nullable()
+            table.string("start_2").nullable()
+            table.string("end_2").nullable()
+            table.string("score").nullable()
             table.timestamps()
 
     def down(self):

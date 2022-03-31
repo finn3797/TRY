@@ -17,6 +17,7 @@ class UserTableSeeder(Seeder):
         User.create(
             {
                 "name": "Osindex",
+                "avatar": "/img/logo.png",
                 "email": "admin@admin.com",
                 "password": Hash.make(hashlib.md5(b'123456').hexdigest()),
                 "phone": "+123456789",

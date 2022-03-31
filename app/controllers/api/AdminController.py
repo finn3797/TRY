@@ -4,13 +4,16 @@ from app.models.User import User
 from masonite.authentication import Auth
 from masonite.response import Response
 from app.helpers import helper
+from masonite.request import Request
+
+from app.notifications.Notice import Notice
 
 
 class AdminController(Controller):
     def me(self, auth: Auth):
         # 测试
         # return user
-        return helper.resModel(auth.attempt_by_id(1))
+        return helper.resModel(auth.user())
         
     def ver(self, response: Response):
         data = '1.0.0'
@@ -143,3 +146,29 @@ class AdminController(Controller):
                     }
         '''
         return jsonMenu
+
+    def sendNotifi(self, request: Request, auth: Auth):
+        # dd(request)
+        user_ids = request.input('user_ids', [])
+        # dd(user_ids)
+        # userList = user_ids.split(",")
+        userList = User.find(user_ids)
+        # dd(userList)
+        # 无法传参
+        # userList.map(lambda u: u.notify(Notice()))
+        # from = auth.user().only(['name',''])
+        userList.map(lambda u: self.notiContent(u))
+        return helper.res('')
+
+    def notiContent(self, u):
+        # u.ext = {
+        #     "avatar": 'avatar',
+        #     "from": 'from',
+        #     "text": 'textttt',
+        # }
+        u.notify(Notice())
+
+    def getNotifi(self, auth: Auth):
+        user = auth.user()
+        return json.dumps(user.notifications.all())
+        return helper.resJson(user.notifications.all())

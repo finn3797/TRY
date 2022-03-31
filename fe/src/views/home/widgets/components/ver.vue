@@ -2,7 +2,7 @@
 	<el-card shadow="hover" header="版本信息">
 		<div style="height: 210px;text-align: center;">
 			<img src="/img/ver.svg" style="height:140px"/>
-			<h2 style="margin-top: 15px;">基于SCUI {{$CONFIG.CORE_VER}}</h2>
+			<h2 style="margin-top: 15px;">系统版本：{{ver || $CONFIG.CORE_VER}}</h2>
 			<p style="margin-top: 5px;">请查看官方手册或相关源码更新</p>
 		</div>
 		<!-- <div style="margin-top: 20px;">

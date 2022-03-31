@@ -12,7 +12,7 @@ DRIVERS = {
         "sms_from": env("VONAGE_SMS_FROM", "+33000000000"),
     },
     "database": {
-        "connection": "sqlite",
+        "connection": "mysql",
         "table": "notifications",
     },
 }

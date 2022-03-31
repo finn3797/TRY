@@ -13,7 +13,7 @@ class Character(Migration):
             table.increments("id")
             table.unsigned_integer("species_id")
             table.string("name")
-            table.string("cover")
+            table.string("cover").nullable()
             table.timestamps()
 
     def down(self):

@@ -5,9 +5,13 @@ ROUTES = [
     Route.group([
         Route.get("", "WelcomeController@api").name('index'),
         Route.get("/test", "WelcomeController@api").name('test'),
+        Route.get("ver", "api/AdminController@ver").name('ver'),
         Route.post("me", "api/AdminController@me").name('me'),
         Route.get("menu/my", "api/AdminController@mymenu").name('menu.my'),
-        Route.get("ver", "api/AdminController@ver").name('ver'),
+
+        
+        Route.post("notifi", "api/AdminController@sendNotifi").name('notifi.send'),
+        Route.get("notifi", "api/AdminController@getNotifi").name('notifi.my'),
     ],
         middleware=['guard:jwt'],
         # 认证关键

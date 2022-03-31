@@ -1,7 +1,6 @@
 
-from gc import collect
 import json
-from typing import Collection
+from masonite.utils.collections import collect
 
 def res(data, message='', status=200, response=None):
     # dd(data)
@@ -17,6 +16,9 @@ def res(data, message='', status=200, response=None):
 def resModel(data, message='', status=200, response=None):
     return res(json.loads(data.to_json()), message, status, response)
 
+def resJson(data, message='', status=200, response=None):
+    return res(json.loads(data), message, status, response)
+
 def typeof(variate):
     type = None
     if isinstance(variate, int):
@@ -26,13 +28,13 @@ def typeof(variate):
     elif isinstance(variate, float):
         type = "float"
     elif isinstance(variate, list):
-        type = "list"
+        type = "collect"
     elif isinstance(variate, tuple):
         type = "tuple"
     elif isinstance(variate, dict):
         type = "dict"
     elif isinstance(variate, set):
         type = "set"
-    elif isinstance(variate, object):
-        type = "object"
+    elif isinstance(variate, collect):
+        type = "collect"
     return type

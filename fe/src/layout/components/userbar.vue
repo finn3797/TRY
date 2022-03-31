@@ -41,7 +41,7 @@
 		</div>
 		<el-dropdown class="user panel-item" trigger="click" @command="handleUser">
 			<div class="user-avatar">
-				<el-avatar :size="30">{{ nameF }}</el-avatar>
+				<el-avatar :src="avatar" :size="30">{{ nameF }}</el-avatar>
 				<label>{{ name }}</label>
 				<el-icon class="el-icon--right"><el-icon-arrow-down /></el-icon>
 			</div>
@@ -60,6 +60,7 @@
 	export default {
 		data(){
 			return {
+				avatar: "",
 				name: "",
 				nameF: "",
 				msg: false,
@@ -98,6 +99,7 @@
 			var userInfo = this.$TOOL.data.get("USER_INFO");
 			this.name = userInfo.name;
 			this.nameF = this.name.substring(0,1);
+			this.avatar = userInfo.avatar
 		},
 		methods: {
 			//个人信息
@@ -127,6 +129,7 @@
 					this.$confirm('确认是否退出当前用户？','提示', {
 						type: 'warning',
 						confirmButtonText: '退出',
+						cancelButtonText: '取消',
 						confirmButtonClass: 'el-button--danger'
 					}).then(() => {
 						this.$router.replace({path: '/login'});

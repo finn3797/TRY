@@ -12,7 +12,7 @@ class Species(Migration):
         with self.schema.create("species") as table:
             table.increments("id")
             table.string("name")
-            table.string("cover")
+            table.string("cover").nullable()
             table.timestamps()
 
     def down(self):
