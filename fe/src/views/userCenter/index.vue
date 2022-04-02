@@ -142,7 +142,6 @@ export default {
 	name: 'userCenter',
 	data() {
 		return {
-			// Plus: Plus,
 			roleString: 'Admin',
 			imageUrl: '',
 			activities: [
