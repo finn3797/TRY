@@ -20,7 +20,6 @@
 									</label>
 									<span>{{ form.email }}</span>
 								</li>
-
 								<li>
 									<label>
 										<el-icon>
@@ -81,7 +80,7 @@
 									>
 										<img v-if="imageUrl" :src="imageUrl" class="avatar" />
 										<el-icon v-else class="avatar-uploader-icon">
-											<Plus />
+											<el-icon-plus />
 										</el-icon>
 									</el-upload>
 								</el-form-item>
@@ -137,14 +136,13 @@
 
 <script>
 import colorTool from '@/utils/color'
-import { Plus } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 
 export default {
 	name: 'userCenter',
 	data() {
 		return {
-			Plus: Plus,
+			// Plus: Plus,
 			roleString: 'Admin',
 			imageUrl: '',
 			activities: [
