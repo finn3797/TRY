@@ -12,6 +12,7 @@ ROUTES = [
         
         Route.post("notifi", "api/AdminController@sendNotifi").name('notifi.send'),
         Route.get("notifi", "api/AdminController@getNotifi").name('notifi.my'),
+        Route.post("upload", "api/AdminController@upload").name('upload'),
     ],
         middleware=['guard:jwt'],
         # 认证关键

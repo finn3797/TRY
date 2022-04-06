@@ -71,18 +71,7 @@
 									<div class="el-form-item-msg">账号信息用于登录，系统不允许修改</div>
 								</el-form-item>
 								<el-form-item label="头像更新">
-									<el-upload
-										class="avatar-uploader"
-										action="https://jsonplaceholder.typicode.com/posts/"
-										:show-file-list="false"
-										:on-success="handleAvatarSuccess"
-										:before-upload="beforeAvatarUpload"
-									>
-										<img v-if="imageUrl" :src="imageUrl" class="avatar" />
-										<el-icon v-else class="avatar-uploader-icon">
-											<el-icon-plus />
-										</el-icon>
-									</el-upload>
+									<sc-upload :apiObj="uploadApi" v-model="form.avatar" title="更新头像" :cropper="true" :compress="1" :aspectRatio="1/1"></sc-upload>
 								</el-form-item>
 								<el-form-item label="姓名">
 									<el-input v-model="form.name"></el-input>
@@ -143,6 +132,7 @@ export default {
 	data() {
 		return {
 			roleString: 'Admin',
+			uploadApi: this.$API.common.upload,
 			imageUrl: '',
 			activities: [
 				{

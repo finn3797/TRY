@@ -1,10 +1,14 @@
+from hashlib import md5
 import json
 from masonite.controllers import Controller
+import pendulum
 from app.models.User import User
 from masonite.authentication import Auth
 from masonite.response import Response
 from app.helpers import helper
 from masonite.request import Request
+from masonite.filesystem import Storage
+from masonite.helpers import UrlsHelper
 
 from app.notifications.Notice import Notice
 
@@ -172,3 +176,21 @@ class AdminController(Controller):
         user = auth.user()
         return json.dumps(user.notifications.all())
         return helper.resJson(user.notifications.all())
+
+    def upload(self, storage: Storage, request: Request):
+        fileName = request.input('fileName', 'file')
+        file = request.input(fileName)
+        fileType = request.input('fileType', fileName)
+        tz = pendulum.now('prc')
+        # .to_datetime_string()
+        # .encode(encoding='UTF-8')
+        # dd(md5(tz).hexdigest())
+        fn = md5(tz.to_datetime_string().encode(encoding='UTF-8')).hexdigest()
+        fileDiskName = fileType + '/' + tz.to_date_string() + '/'
+        # dd(fileDiskName)
+        storage.disk('local').put_file(fileDiskName, file, fn)
+        # dd(UrlsHelper)
+        return UrlsHelper.asset('local', fileDiskName + fn)
+        return helper.resJson({
+            'data': urls.asset('disk', fileDiskName)
+        },'上传成功')
