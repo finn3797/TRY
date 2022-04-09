@@ -6,6 +6,7 @@
 # 安装依赖
 yarn
 
+cp .env-example .env.local
 # 启动项目(开发模式)
 yarn dev
 ```
