@@ -26,7 +26,6 @@ class AdminController(Controller):
     def mymenu(self):
         jsonMenu = '''
         {
-                        "data": {
                             "menu": [
                                 {
                                     "name": "home",
@@ -139,6 +138,27 @@ class AdminController(Controller):
                                             "component": "template/tabinfo"
                                         }
                                     ]
+                                },
+                                {
+                                    "name": "splist",
+                                    "path": "/splist",
+                                    "meta": {
+                                        "title": "物种",
+                                        "icon": "el-icon-files",
+                                        "type": "menu"
+                                    },
+                                    "component": "gwas/species/list"
+                                },
+                                {
+                                    "path": "/splist/save/:id?",
+                                    "name": "splist-save",
+                                    "meta": {
+                                        "title": "编辑",
+                                        "hidden": true,
+                                        "active": "/splist",
+                                        "type": "menu"
+                                    },
+                                    "component": "gwas/species/form"
                                 }
                             ],
                             "permissions": [
@@ -146,10 +166,9 @@ class AdminController(Controller):
                                 "list.edit",
                                 "list.delete"
                             ]
-                        }
                     }
         '''
-        return jsonMenu
+        return helper.resJson(jsonMenu)
 
     def sendNotifi(self, request: Request, auth: Auth):
         # dd(request)
